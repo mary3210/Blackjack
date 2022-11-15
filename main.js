@@ -5,7 +5,7 @@ const dealerCardOne = document.querySelector("#dealerCardOne")
 const dealerCardTwo = document.querySelector("#dealerCardTwo")
 const hitBtn = document.querySelector("#hit")
 const standBtn = document.querySelector('#stand')
-
+const userCardsDiv = document.querySelector('.userCards')
 
 
 
@@ -13,7 +13,6 @@ function shuffleCards(){
     const num = Math.floor(Math.random() * (11 - 1) + 1)
     return num 
 }
-
 
 function gamePlay(){
     userCardOne.innerHTML = shuffleCards()
@@ -33,12 +32,15 @@ function chooseBtns(){
     }
     
 }
-function hitBtn(){
+function selectHitBtn(){
     const newCard = document.createElement("p")
-    newCard.appendChild(".userCards")
-    newCard.innerHTML =
+    userCardsDiv.appendChild(newCard)
+    newCard.innerHTML = shuffleCards()
+    console.log(newCard.innerHTML)
 
 }
 
 gamePlay()
 chooseBtns()
+
+hitBtn.addEventListener("click", selectHitBtn())
