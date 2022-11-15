@@ -12,7 +12,6 @@ const standBtn = document.querySelector('#stand')
 function shuffleCards(){
     const num = Math.floor(Math.random() * (11 - 1) + 1)
     return num 
-    
 }
 
 
