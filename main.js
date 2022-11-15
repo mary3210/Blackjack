@@ -24,23 +24,30 @@ function gamePlay(){
 
 
 
-function chooseBtns(){
+function checkingValues(){
     let sum = 0
-    sum = parseInt(userCardOne.innerHTML) + parseInt(userCardTwo.innerHTML) 
-    if(sum < 21){
-
+    
+    for( i = 0; i < cardList.length; i++){
+        sum+= parseInt(cardList[i])
+        console.log(sum)
     }
+    if(sum < 21){
+      selectHitBtn()
+      
+    }
+    else{ console.log("you lost")}
     
 }
 function selectHitBtn(){
     const newCard = document.createElement("p")
     userCardsDiv.appendChild(newCard)
     newCard.innerHTML = shuffleCards()
-    console.log(newCard.innerHTML)
+    cardList.push(newCard.innerHTML)
+    
 
 }
 
 gamePlay()
-chooseBtns()
+const cardList = [userCardOne.innerHTML, userCardTwo.innerHTML]
 
-hitBtn.addEventListener("click", selectHitBtn())
+hitBtn.addEventListener("click", checkingValues)
