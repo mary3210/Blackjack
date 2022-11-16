@@ -6,6 +6,9 @@ const hitBtn = document.querySelector("#hit")
 const standBtn = document.querySelector('#stand')
 const userCardsDiv = document.querySelector('.userCards')
 const dealersCardsDiv = document.querySelector('.dealerCards')
+const winOrLosePtag = document.querySelector('#winOrLose')
+const usersHand = document.querySelector('#usersHand')
+const dealersHand = document.querySelector('#dealersHand')
 
 // random value for card(s)
 function shuffleCards(){
@@ -34,19 +37,32 @@ function checkingValues(){
         console.log(sum)
     }
     if(sum < 21){
-      selectHitBtn()
-      
+      addNewCard()
+      sum+= parseInt(cardList[i])
+      console.log(sum)
+      if (sum >21){
+        console.log("you busted")
+        dealersTurn()
+      }
+      else if(sum == 21){
+        console.log("you hit blackjack ahh!")
+        dealersTurn()
+      }
     }
-    else if(sum == 21){
-        console.log("You win")
+    //else if(sum == 21){
+     //   console.log("You win")
+        
     }
-    else{ 
-        console.log("you lost")}
+    //else{ 
+     //   dealersTurn()
+    //    console.log("you busted")}
 
-}
+
+
 //adds another card on the table
-function selectHitBtn(){
+function addNewCard(){
     const newCard = document.createElement("p")
+
     userCardsDiv.appendChild(newCard)
     newCard.innerHTML = shuffleCards()
     cardList.push(newCard.innerHTML)
@@ -64,26 +80,50 @@ function dealersTurn(){
         console.log(sum)
     
     if(sum < 17){
-        const dealersNewCard = document.createElement("p")
-        dealersCardsDiv.appendChild(dealersNewCard)
-        dealersNewCard.innerHTML = shuffleCards()
-        dealersCardList.push(dealersNewCard.innerHTML)
-        console.log(dealersCardList)
-    }
-    else if(sum == 21){
-        console.log("blackjack")
-    }
-    else if(sum > 21){
-        console.log("Dealer Busted")
-        break
-    }
-    else{
-        console.log("this is where we are at " + sum)
-    }
-    }
+        setTimeout(function(){
+            const dealersNewCard = document.createElement("p")
+            dealersCardsDiv.appendChild(dealersNewCard)
+            dealersNewCard.innerHTML = shuffleCards()
+            dealersCardList.push(dealersNewCard.innerHTML)
+            console.log(dealersCardList)
+            return dealersCardList
+            if(sum == 21){
+                console.log("blackjack")
+                
+            }
+            else if(sum > 21){
+                console.log("Dealer Busted")
+                
+                b
+            }
+            else{
+                console.log("this is where we are at " + sum)
+            }
+            
+       
+        },2000)
+    
+        
+       
+        
+   // }
+  //  else if(sum == 21){
+   //     console.log("blackjack")
+     //   break
+   // }
+   // else if(sum > 21){
+    //    console.log("Dealer Busted")
+        
+     //   break
+   // }
+   // else{
+    //    console.log("this is where we are at " + sum)
+    //}
+    //}
     whoIsWinner()
 }
-
+    }
+}
 function whoIsWinner(){
     let userSum = 0
     let dealerSum = 0
@@ -93,22 +133,44 @@ function whoIsWinner(){
     for (i = 0; i <dealersCardList.length; i++){
         dealerSum+= parseInt(dealersCardList[i])
 }
-    if (userSum > dealerSum && userSum < 21)
+    if (userSum > dealerSum && userSum < 21){
     console.log("yay you win!")
+    dealersHand.innerHTML = `Dealer's cards: ${dealerSum}`
+    usersHand.innerHTML = `You have ${userSum}`
+    winOrLosePtag.innerHTML = "yay you win!"}
     else if( dealerSum > userSum && dealerSum < 21){
         console.log("you lose")
+        dealersHand.innerHTML = `Dealer has ${dealerSum}`
+        usersHand.innerHTML = `You have ${userSum}`
+        winOrLosePtag.innerHTML = "you lose"
     }
-    else if(userSum == dealerSum){
+    else if(userSum == dealerSum && userSum <= 21){
         console.log("it's a tie")
+        dealersHand.innerHTML = `Dealer has ${dealerSum}`
+        usersHand.innerHTML = `You have ${userSum}`
+        winOrLosePtag.innerHTML = "it's a tie"
     }
     else if(userSum >21){
         console.log("Dealer Wins")
+        dealersHand.innerHTML = `Dealer has ${dealerSum}`
+        usersHand.innerHTML = `You have ${userSum}`
+        winOrLosePtag.innerHTML = "Dealer Wins"
     }
     else if(dealerSum >21){
         console.log("User wins")
-
+        dealersHand.innerHTML = `Dealer has ${dealerSum}`
+        usersHand.innerHTML = `You have ${userSum}`
+        winOrLosePtag.innerHTML = "You win!"
+    }
+    else if(userSum == 21) {
+        console.log("You hit Blackjack! You win!")
+        dealersHand.innerHTML = `Dealer has ${dealerSum}`
+        usersHand.innerHTML = `You have ${userSum}`
+        winOrLosePtag.innerHTML = "You hit Blackjack! You win!"
     }
 }
+
+
 gamePlay()
 const cardList = [userCardOne.innerHTML, userCardTwo.innerHTML]
 const dealersCardList = [dealerCardOne.innerHTML, dealerCardTwo.innerHTML]
