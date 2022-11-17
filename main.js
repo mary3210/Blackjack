@@ -9,7 +9,7 @@ const dealersCardsDiv = document.querySelector('.dealerCards')
 const winOrLosePtag = document.querySelector('#winOrLose')
 const usersHand = document.querySelector('#usersHand')
 const dealersHand = document.querySelector('#dealersHand')
-let sum = 0
+//et sum = 0
 // random value for card(s)
 function shuffleCards(){
     const num = Math.floor(Math.random() * (10 - 1) + 1)
@@ -32,7 +32,7 @@ function gamePlay(){
 
 //checking if users cards is less than, equal, or greater than 21
 function usersTurn(){
-    
+    let sum = 0
     console.log(cardList[0].innerHTML + ' first card')
     sum += parseInt(cardList[0].innerHTML)
     console.log(sum + ' the sum after adding the first card')
@@ -41,23 +41,25 @@ function usersTurn(){
         console.log(`${sum} sum after iteration ${i}` )
        
         }
-    
-    if(sum < 21){
-      addNewCard()
+    if (sum < 21){
+        addNewCard()
         
-      sum+= parseInt(cardList[i].innerHTML)
-      console.log(sum)
-      ace()
-      if (sum >21){
+        sum+= parseInt(cardList[i].innerHTML)
+        console.log(sum)
+        console.log('a')
+        }
+    //  ace()
+      if (sum > 21){
         console.log("you busted")
-       whoIsWinner()
+        whoIsWinner()
       }
       else if(sum == 21){
         console.log("you hit blackjack ahh!")
         dealersTurn()
       }
     }
-    }
+  
+    
   
 
 //adds another card on the table
@@ -145,13 +147,13 @@ function dealersTurn(){
     dealerCardTwo.style.display = "unset"
     
     console.log(dealersCardList)
-    let sum = 0
-        sum += parseInt(dealersCardList[0])
+    let dealSum = 0
+        dealSum += parseInt(dealersCardList[0])
     for( i = 1; i < dealersCardList.length; i++){
-        sum+= parseInt(dealersCardList[i])
-        console.log(sum)
+        dealSum+= parseInt(dealersCardList[i])
+        console.log(dealSum)
     
-    if(sum < 17){
+    if(dealSum < 17){
         
             const dealersNewCard = document.createElement("p")
             dealersCardsDiv.appendChild(dealersNewCard)
@@ -162,17 +164,17 @@ function dealersTurn(){
        
         
     }
-    else if(sum == 21){
+    else if(dealSum == 21){
        console.log("blackjack")
        break
     }
-    else if(sum > 21){
+    else if(dealSum > 21){
        console.log("Dealer Busted")
         
       break
    }
     else{
-      console.log("this is where we are at " + sum)
+      console.log("this is where we are at " + dealSum)
     }
    }
   whoIsWinner()
@@ -254,7 +256,7 @@ function imgCard(){
 //switches from 1 to 11 depending on conditions switches ace back to an 11
 function ace(){
     if(cardList[i].innerHTML.includes(1)){
-        if(sum <=21){
+        if(sum <=10){
             sum -= parseInt(cardList[i].innerHTML)
           cardList[i].innerHTML = 11
           sum+=parseInt(cardList[i].innerHTML)
@@ -266,7 +268,7 @@ function ace(){
 
 
 
-                
+
             }
         }
     }
