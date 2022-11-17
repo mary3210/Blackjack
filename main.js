@@ -9,7 +9,7 @@ const dealersCardsDiv = document.querySelector('.dealerCards')
 const winOrLosePtag = document.querySelector('#winOrLose')
 const usersHand = document.querySelector('#usersHand')
 const dealersHand = document.querySelector('#dealersHand')
-
+let sum = 0
 // random value for card(s)
 function shuffleCards(){
     const num = Math.floor(Math.random() * (3 - 1) + 1)
@@ -32,7 +32,7 @@ function gamePlay(){
 
 //checking if users cards is less than, equal, or greater than 21
 function usersTurn(){
-    let sum = 0
+    
     console.log(cardList[0].innerHTML)
     sum += parseInt(cardList[0].innerHTML)
     console.log(sum)
@@ -55,6 +55,7 @@ function usersTurn(){
     
     if(sum < 21){
       addNewCard()
+        
       sum+= parseInt(cardList[i].innerHTML)
       console.log(sum)
       if (sum >21){
@@ -195,7 +196,7 @@ function whoIsWinner(){
     let userSum = 0
     let dealerSum = 0
     for (i = 0; i <cardList.length; i++){
-        userSum+= parseInt(cardList[i])
+        userSum+= parseInt(cardList[i].innerHTML)
     }
     for (i = 0; i <dealersCardList.length; i++){
         dealerSum+= parseInt(dealersCardList[i])
@@ -259,12 +260,19 @@ function imgCard(){
     }
 }
 
-//function ace(){
-  //  if sum < 21
-    //newCard.innerHTML = 11
-   // else if (sum >21)
-   // newcard.innerHTML = 1
-//}
-
+function ace(){
+    if(cardList[i].innerHTML.includes(1)){
+        if(sum <=21){
+            sum -= parseInt(cardList[i].innerHTML)
+          cardList[i].innerHTML = 11
+          sum+=parseInt(cardList[i].innerHTML)
+            if (sum >21){
+                sum -= parseInt(cardList[i].innerHTML)
+                cardList[i].innerHTML = 1
+                sum+=parseInt(cardList[i].innerHTML)
+            }
+        }
+    }
+}
 hitBtn.addEventListener("click", usersTurn)
 standBtn.addEventListener("click", dealersTurn)
