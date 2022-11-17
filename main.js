@@ -12,7 +12,7 @@ const dealersHand = document.querySelector('#dealersHand')
 
 // random value for card(s)
 function shuffleCards(){
-    const num = Math.floor(Math.random() * (11 - 1) + 1)
+    const num = Math.floor(Math.random() * (3 - 1) + 1)
     return num
     
 }
@@ -31,17 +31,31 @@ function gamePlay(){
 
 
 //checking if users cards is less than, equal, or greater than 21
-function checkingValues(){
+function usersTurn(){
     let sum = 0
-    sum += parseInt(cardList[0])
+    console.log(cardList[0].innerHTML)
+    sum += parseInt(cardList[0].innerHTML)
     console.log(sum)
     for( i = 1; i < cardList.length; i++){
-        sum+= parseInt(cardList[i])
+        sum+= parseInt(cardList[i].innerHTML)
         console.log(sum)
-    }
+        if(cardList[i].innerHTML.includes(1)){
+            if(sum <=21){
+                sum -= parseInt(cardList[i].innerHTML)
+              cardList[i].innerHTML = 11
+              sum+=parseInt(cardList[i].innerHTML)
+                if (sum >21){
+                    sum -= parseInt(cardList[i].innerHTML)
+                    cardList[i].innerHTML = 1
+                    sum+=parseInt(cardList[i].innerHTML)
+                }
+            }
+        }
+        }
+    
     if(sum < 21){
       addNewCard()
-      sum+= parseInt(cardList[i])
+      sum+= parseInt(cardList[i].innerHTML)
       console.log(sum)
       if (sum >21){
         console.log("you busted")
@@ -52,24 +66,21 @@ function checkingValues(){
         dealersTurn()
       }
     }
-    //else if(sum == 21){
-     //   console.log("You win")
-        
     }
-    //else{ 
-     //   dealersTurn()
-    //    console.log("you busted")}
-
-
+  
 
 //adds another card on the table
 function addNewCard(){
     const newCard = document.createElement("p")
-
+   
     userCardsDiv.appendChild(newCard)
+    
     newCard.innerHTML = shuffleCards()
-    cardList.push(newCard.innerHTML)
-    if(newCard.innerHTML == 1){
+    newCard.classList.add("userCard")
+    //console.log(cardList)
+    //cardList.push(newCard.innerHTML)
+    if(newCard.innerHTML == 1 ){
+
         const img = document.createElement("img")
            img.setAttribute('src','data:image/png;base64,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')
             userCardsDiv.append(img)
@@ -173,7 +184,8 @@ function dealersTurn(){
       console.log("this is where we are at " + sum)
     }
    }
-  setTimeout(whoIsWinner, 2000)
+  whoIsWinner()
+  
 }
 
     
@@ -230,7 +242,8 @@ function whoIsWinner(){
 
 
 gamePlay()
-const cardList = [userCardOne.innerHTML, userCardTwo.innerHTML]
+const cardList = document.getElementsByClassName("userCard")
+//const cardList = [userCardOne.innerHTML, userCardTwo.innerHTML]
 const dealersCardList = [dealerCardOne.innerHTML, dealerCardTwo.innerHTML]
 
 function imgCard(){
@@ -246,6 +259,12 @@ function imgCard(){
     }
 }
 
+//function ace(){
+  //  if sum < 21
+    //newCard.innerHTML = 11
+   // else if (sum >21)
+   // newcard.innerHTML = 1
+//}
 
-hitBtn.addEventListener("click", checkingValues)
+hitBtn.addEventListener("click", usersTurn)
 standBtn.addEventListener("click", dealersTurn)
