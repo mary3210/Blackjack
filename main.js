@@ -12,7 +12,7 @@ const dealersHand = document.querySelector('#dealersHand')
 let sum = 0
 // random value for card(s)
 function shuffleCards(){
-    const num = Math.floor(Math.random() * (3 - 1) + 1)
+    const num = Math.floor(Math.random() * (10 - 1) + 1)
     return num
     
 }
@@ -22,7 +22,7 @@ function gamePlay(){
     const gameOn = true;
     userCardOne.innerHTML = shuffleCards()
     userCardTwo.innerHTML = shuffleCards()
-
+    
     dealerCardOne.innerHTML = shuffleCards()
     dealerCardTwo.innerHTML = shuffleCards()
     dealerCardTwo.style.display = "none"
@@ -33,24 +33,13 @@ function gamePlay(){
 //checking if users cards is less than, equal, or greater than 21
 function usersTurn(){
     
-    console.log(cardList[0].innerHTML)
+    console.log(cardList[0].innerHTML + ' first card')
     sum += parseInt(cardList[0].innerHTML)
-    console.log(sum)
+    console.log(sum + ' the sum after adding the first card')
     for( i = 1; i < cardList.length; i++){
         sum+= parseInt(cardList[i].innerHTML)
-        console.log(sum)
-        if(cardList[i].innerHTML.includes(1)){
-            if(sum <=21){
-                sum -= parseInt(cardList[i].innerHTML)
-              cardList[i].innerHTML = 11
-              sum+=parseInt(cardList[i].innerHTML)
-                if (sum >21){
-                    sum -= parseInt(cardList[i].innerHTML)
-                    cardList[i].innerHTML = 1
-                    sum+=parseInt(cardList[i].innerHTML)
-                }
-            }
-        }
+        console.log(`${sum} sum after iteration ${i}` )
+       
         }
     
     if(sum < 21){
@@ -58,6 +47,7 @@ function usersTurn(){
         
       sum+= parseInt(cardList[i].innerHTML)
       console.log(sum)
+      ace()
       if (sum >21){
         console.log("you busted")
        whoIsWinner()
@@ -260,6 +250,8 @@ function imgCard(){
     }
 }
 
+
+//switches from 1 to 11 depending on conditions switches ace back to an 11
 function ace(){
     if(cardList[i].innerHTML.includes(1)){
         if(sum <=21){
@@ -270,9 +262,16 @@ function ace(){
                 sum -= parseInt(cardList[i].innerHTML)
                 cardList[i].innerHTML = 1
                 sum+=parseInt(cardList[i].innerHTML)
+            
+
+
+
+                
             }
         }
     }
 }
+ 
+
 hitBtn.addEventListener("click", usersTurn)
 standBtn.addEventListener("click", dealersTurn)
