@@ -45,7 +45,7 @@ function checkingValues(){
       console.log(sum)
       if (sum >21){
         console.log("you busted")
-        dealersTurn()
+       whoIsWinner()
       }
       else if(sum == 21){
         console.log("you hit blackjack ahh!")
@@ -193,7 +193,7 @@ function whoIsWinner(){
     dealersHand.innerHTML = `Dealer's cards: ${dealerSum}`
     usersHand.innerHTML = `You have ${userSum}`
     winOrLosePtag.innerHTML = "yay you win!"}
-    else if( dealerSum > userSum && dealerSum < 21){
+    else if( dealerSum > userSum && dealerSum <= 21){
         console.log("you lose")
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
@@ -207,7 +207,7 @@ function whoIsWinner(){
     }
     else if(userSum >21){
         console.log("Dealer Wins")
-        dealersHand.innerHTML = `Dealer has ${dealerSum}`
+        dealersHand.innerHTML = `you busted!`
         usersHand.innerHTML = `You have ${userSum}`
         winOrLosePtag.innerHTML = "Dealer Wins"
     }
