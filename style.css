@@ -45,4 +45,12 @@ img {
     justify-content: center;
 }
 
+.dealername {
+    display:flex;
+    justify-content: center;
+}
 
+.username {
+    display:flex;
+    justify-content: center;
+}
