@@ -1,0 +1,48 @@
+body {
+    background-color: #F8C8DC;
+    
+}
+
+img {
+    height: 250px;
+    width: 160px;
+    padding: 10px;
+}
+
+.h1 {
+    display:flex;
+    justify-content: center
+}
+
+.userCards {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.dealerCards {
+    display: flex;
+    justify-content: center
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.winner-loser {
+    display:flex;
+    justify-content: center;
+}
+
+.dealersHandDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.usersHandDiv {
+    display: flex;
+    justify-content: center;
+}
+
+
