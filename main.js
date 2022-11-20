@@ -5,6 +5,7 @@ const userCardTwo = document.querySelector("#userCardTwo")
 const cardList = document.getElementsByClassName("userCard")
 const dealersCardList = document.getElementsByClassName("dealersCard")
 const hitBtn = document.querySelector("#hit")
+const standBtn = document.querySelector('#stand')
 
 function shuffleCards(){
     const num = Math.floor(Math.random() * (11 - 1) + 1)
@@ -116,10 +117,7 @@ function usersTurn(){
 }
 if (sum < 21){
     UsersCard()
-    
     sum+= parseInt(cardList[i].innerHTML)
-    console.log(sum)
-    console.log('a')
     }
   if (sum > 21){
     console.log("you busted")
@@ -129,5 +127,23 @@ if (sum < 21){
   }
 }
 
+function dealersTurn(){
+   let sum = 0
+   for( i = 0; i < dealersCardList.length; i++){
+    sum+= parseInt(dealersCardList[i].innerHTML)
+}
+while(sum < 17 ){
+    dealersCard()
+    sum+= parseInt(dealersCardList[dealersCardList.length-1].innerHTML)
+    console.log(sum)
+  
+}
+}
+
+
+
+
+
  gameplay()
  hitBtn.addEventListener("click", usersTurn)
+ standBtn.addEventListener("click", dealersTurn)
