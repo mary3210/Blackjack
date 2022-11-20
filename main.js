@@ -2,10 +2,13 @@ const userCardsDiv = document.querySelector('.userCards')
 const dealersCardsDiv = document.querySelector('.dealerCards')
 const userCardOne = document.querySelector("#userCardOne")
 const userCardTwo = document.querySelector("#userCardTwo")
+const cardList = document.getElementsByClassName("userCard")
+const dealersCardList = document.getElementsByClassName("dealersCard")
+const hitBtn = document.querySelector("#hit")
 
 function shuffleCards(){
     const num = Math.floor(Math.random() * (11 - 1) + 1)
-    console.log(num)
+   // console.log(num)
     return num
 }
 
@@ -105,4 +108,26 @@ function dealersCard(){
         }
     }
 }
- displayUsersFirstTwoCards()
+
+function usersTurn(){
+    let sum = 0
+    for( i = 0; i < cardList.length; i++){
+        sum+= parseInt(cardList[i].innerHTML)
+}
+if (sum < 21){
+    UsersCard()
+    
+    sum+= parseInt(cardList[i].innerHTML)
+    console.log(sum)
+    console.log('a')
+    }
+  if (sum > 21){
+    console.log("you busted")
+  }
+  else if(sum == 21){
+    console.log("you hit blackjack ahh!")
+  }
+}
+
+ gameplay()
+ hitBtn.addEventListener("click", usersTurn)
