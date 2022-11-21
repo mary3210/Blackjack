@@ -126,6 +126,7 @@ function dealersSecondCard(){
     dealersCardsDiv.append(img)
     img.setAttribute("id", "cardTwoImg")
 }
+
 function dealersSecondCardFlip(){
     cardTwo = document.getElementById("cardTwoTag")
     document.getElementById("cardTwoImg").style.display='none';
@@ -133,7 +134,6 @@ function dealersSecondCardFlip(){
     const img2 = document.createElement("img")
     img2.setAttribute('src',returnImage(cardTwo.innerHTML))
     dealersCardsDiv.append(img2)
-
 } else if (cardTwo.innerHTML  == 10){
     const number = Math.floor(Math.random() * (3 - 0) + 0)
         if(number == 0){
@@ -153,6 +153,7 @@ function dealersSecondCardFlip(){
     }
 }
 }
+
 function usersTurn(){
     let sum = 0
     for( i = 0; i < cardList.length; i++){
@@ -182,7 +183,6 @@ while(sum < 17 ){
   if (sum >= 17){
     whoIsWinner()
 }
-
 }
 whoIsWinner()
 }
@@ -195,20 +195,20 @@ function whoIsWinner(){
     }
     for (i = 0; i <dealersCardList.length; i++){
         dealerSum+= parseInt(dealersCardList[i].innerHTML)
-}
+    }
     if (userSum > dealerSum && userSum < 21){
     dealersHand.innerHTML = `Dealer's cards: ${dealerSum}`
     usersHand.innerHTML = `You have ${userSum}`
-    winOrLosePtag.innerHTML = "yay you win!"}
+    winOrLosePtag.innerHTML = "You Win!"}
     else if( dealerSum > userSum && dealerSum <= 21){
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
-        winOrLosePtag.innerHTML = "you lose"
+        winOrLosePtag.innerHTML = "You Lose"
     }
     else if(userSum == dealerSum && userSum <= 21){
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
-        winOrLosePtag.innerHTML = "it's a tie"
+        winOrLosePtag.innerHTML = "It's A Tie"
     }
     else if(userSum >21){
         dealersHand.innerHTML = `you busted!`
@@ -218,12 +218,12 @@ function whoIsWinner(){
     else if(dealerSum >21){
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
-        winOrLosePtag.innerHTML = "You win!"
+        winOrLosePtag.innerHTML = "You Win!"
     }
     else if(userSum == 21) {
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
-        winOrLosePtag.innerHTML = "You hit Blackjack! You win!"
+        winOrLosePtag.innerHTML = "You Hit Blackjack! You Win!"
     }
 }
 
