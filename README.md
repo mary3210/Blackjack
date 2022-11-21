@@ -12,9 +12,10 @@ Blackjack is a User versus Dealer type of card game.
    * If the sum of the Dealer's cards are greater than 21 the Dealer is BUST and the User wins.
 6. If the sum of the User's cards are greater than that of the Dealer's cards without exceeding 21, the User wins.
 7. If the sum of the Dealer's cards are greater than that of the User's cards without exceeding 21, the Dealer wins.
-9. Game resets after revealing the winner.
+9. Game reveals winner to User.
 
 ## Screenshot
+The display of the game when the User first starts the game. 
 ![Game Image](./images/Blackjack.png)
 
 ## Technologies Used

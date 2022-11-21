@@ -12,7 +12,12 @@ Blackjack is a User versus Dealer type of card game.
    * If the sum of the Dealer's cards are greater than 21 the Dealer is BUST and the User wins.
 6. If the sum of the User's cards are greater than that of the Dealer's cards without exceeding 21, the User wins.
 7. If the sum of the Dealer's cards are greater than that of the User's cards without exceeding 21, the Dealer wins.
-9. Game resets after revealing the winner.
+9. Game reveals winner to User.
 
 ## wireframe
 [wireframe-sketch][https://www.figma.com/file/UV2ttY1J9HCDXraZp8aAhy/Untitled?node-id=0%3A1&t=D3cl5O2W8VGBpiI4-1]
+
+## Next Steps
+* The ace will have an additional option to have the value 11. 
+* The Win and lose outputs will have additional css styling. 
+
