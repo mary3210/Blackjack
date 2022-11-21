@@ -129,9 +129,29 @@ function dealersSecondCard(){
 function dealersSecondCardFlip(){
     cardTwo = document.getElementById("cardTwoTag")
     document.getElementById("cardTwoImg").style.display='none';
+    if (cardTwo.innerHTML  < 10){
     const img2 = document.createElement("img")
     img2.setAttribute('src',returnImage(cardTwo.innerHTML))
     dealersCardsDiv.append(img2)
+
+} else if (cardTwo.innerHTML  == 10){
+    const number = Math.floor(Math.random() * (3 - 0) + 0)
+        if(number == 0){
+            const img = document.createElement("img")
+            img.setAttribute('src','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu3D86B-U4GBPd4EaIKvRyUW4ZOXvlNLLoBQ&usqp=CAU')
+            dealersCardsDiv.append(img)
+        }
+        else if( number == 1){
+            const img = document.createElement("img")
+            img.setAttribute('src','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTicdEMNz1fZM-QTh-KxzIEVuuS_3MO5lZ7XQ&usqp=CAU')
+            dealersCardsDiv.append(img)
+        }
+        else if(number == 2){
+            const img = document.createElement('img')
+            img.setAttribute('src','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBjKpPY5scmoO2UjpMstFgsEqu-TRT9jQQRz5K3RqxK1AhpJu_H1BmaPEVnhSpgGvojoI&usqp=CAU')
+            dealersCardsDiv.append(img)
+    }
+}
 }
 function usersTurn(){
     let sum = 0
@@ -167,6 +187,7 @@ while(sum < 17 ){
 }
 
 }
+whoIsWinner()
 }
 
 function whoIsWinner(){

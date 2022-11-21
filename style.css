@@ -29,6 +29,7 @@ img {
 .btns {
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 .winner-loser {
@@ -58,5 +59,13 @@ img {
 
 #hit {
     background-color: #77DDF9;
-    border: 2px solid darkblue;
+    border: none;
+    border-radius: 10%;
+    
+}
+
+#stand{
+    background-color: red;
+    border: none;
+    border-radius: 10%;
 }
