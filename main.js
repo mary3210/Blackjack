@@ -163,11 +163,9 @@ if (sum < 21){
     sum+= parseInt(cardList[i].innerHTML)
     }
   if (sum > 21){
-    console.log("you busted")
     whoIsWinner()
   }
   else if(sum == 21){
-    console.log("you hit blackjack ahh!")
     dealersTurn()
   }
 }
@@ -181,7 +179,6 @@ function dealersTurn(){
 while(sum < 17 ){
     dealersCard()
     sum+= parseInt(dealersCardList[dealersCardList.length-1].innerHTML)
-    console.log(sum)
   if (sum >= 17){
     whoIsWinner()
 }
@@ -191,48 +188,39 @@ whoIsWinner()
 }
 
 function whoIsWinner(){
-    console.log("a")
     let userSum = 0
     let dealerSum = 0
     for (i = 0; i <cardList.length; i++){
         userSum+= parseInt(cardList[i].innerHTML)
-        console.log(userSum)
     }
     for (i = 0; i <dealersCardList.length; i++){
         dealerSum+= parseInt(dealersCardList[i].innerHTML)
-        console.log(dealerSum)
 }
     if (userSum > dealerSum && userSum < 21){
-    console.log("yay you win!")
     dealersHand.innerHTML = `Dealer's cards: ${dealerSum}`
     usersHand.innerHTML = `You have ${userSum}`
     winOrLosePtag.innerHTML = "yay you win!"}
     else if( dealerSum > userSum && dealerSum <= 21){
-        console.log("you lose")
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
         winOrLosePtag.innerHTML = "you lose"
     }
     else if(userSum == dealerSum && userSum <= 21){
-        console.log("it's a tie")
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
         winOrLosePtag.innerHTML = "it's a tie"
     }
     else if(userSum >21){
-        console.log("Dealer Wins")
         dealersHand.innerHTML = `you busted!`
         usersHand.innerHTML = `You have ${userSum}`
         winOrLosePtag.innerHTML = "Dealer Wins"
     }
     else if(dealerSum >21){
-        console.log("User wins")
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
         winOrLosePtag.innerHTML = "You win!"
     }
     else if(userSum == 21) {
-        console.log("You hit Blackjack! You win!")
         dealersHand.innerHTML = `Dealer has ${dealerSum}`
         usersHand.innerHTML = `You have ${userSum}`
         winOrLosePtag.innerHTML = "You hit Blackjack! You win!"
