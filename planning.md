@@ -17,7 +17,5 @@ Blackjack is a User versus Dealer type of card game.
 ## wireframe
 [wireframe-sketch][https://www.figma.com/file/UV2ttY1J9HCDXraZp8aAhy/Untitled?node-id=0%3A1&t=D3cl5O2W8VGBpiI4-1]
 
-## Next Steps
-* The ace will have an additional option to have the value 11. 
-* The Win and lose outputs will have additional css styling. 
+
 

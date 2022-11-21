@@ -27,4 +27,8 @@ The display of the game when the User first starts the game.
 ## Getting Started
 [Game Link](https://mary3210.github.io/Blackjack/)
 
+## Next Steps
+* The ace will have an additional option to have the value 11. 
+* The Win and lose outputs with additional css styling. 
+
 
