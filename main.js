@@ -10,11 +10,13 @@ const winOrLosePtag = document.querySelector('#winOrLose')
 const usersHand = document.querySelector('#usersHand')
 const dealersHand = document.querySelector('#dealersHand')
 
+//Random value from 1-10 is assigned
 function shuffleCards(){
     const num = Math.floor(Math.random() * (11 - 1) + 1)
     return num
 }
 
+//events of the game
 function gameplay(){
     UsersCard()
     UsersCard()
@@ -24,6 +26,7 @@ function gameplay(){
     standBtn.addEventListener("click", dealersTurn)
 }
 
+//creates the users card
 function UsersCard(){
     const newCard = document.createElement("p")
     userCardsDiv.appendChild(newCard)
@@ -54,6 +57,7 @@ function UsersCard(){
     }
 }
 
+//returns the img URL to display a card Image
 function returnImage(cardValue){
     if( cardValue == 1 ){
         return 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Playing_card_club_A.svg/614px-Playing_card_club_A.svg.png'
@@ -83,7 +87,8 @@ function returnImage(cardValue){
         return 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Playing_card_heart_9.svg/1200px-Playing_card_heart_9.svg.png'
     }       
 }
-    
+
+//creates a card for the dealer
 function dealersCard(){
     const newCard = document.createElement("p")
     userCardsDiv.appendChild(newCard)
@@ -114,6 +119,7 @@ function dealersCard(){
     }
 }
 
+//creates the second card for the dealer that assigns an img url without considering the card value
 function dealersSecondCard(){
     newCard = document.createElement("p")
     userCardsDiv.appendChild(newCard)
@@ -127,6 +133,7 @@ function dealersSecondCard(){
     img.setAttribute("id", "cardTwoImg")
 }
 
+//changes the image of the second card
 function dealersSecondCardFlip(){
     cardTwo = document.getElementById("cardTwoTag")
     document.getElementById("cardTwoImg").style.display='none';
@@ -155,6 +162,7 @@ function dealersSecondCardFlip(){
     }
 }
 
+//The users turn enables conditionals that if the user has busted or if the user can hit or has reached blackjack.
 function usersTurn(){
     let sum = 0
     for( i = 0; i < cardList.length; i++){
@@ -172,6 +180,7 @@ function usersTurn(){
     }
 }
 
+//counting the value of the dealers cards with conditionals that determine to keep hitting or stop 
 function dealersTurn(){
     dealersSecondCardFlip()
     let sum = 0
@@ -188,6 +197,7 @@ function dealersTurn(){
     whoIsWinner()
 }
 
+//displays winner or loser and values of dealers and users hand.
 function whoIsWinner(){
     let userSum = 0
     let dealerSum = 0
